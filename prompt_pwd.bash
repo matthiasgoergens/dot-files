@@ -8,17 +8,12 @@ function prompt_pwd {
 
 function prompt_host {
     local maxlen=3
+	echo "$(echo $HOSTNAME | cut -c 1-$maxlen)"
+}
 
-	local new_host=
-	
-    local trunc_symbol="."
-    if [ ${#HOSTNAME} -gt $maxlen ]
-    then
-		echo "$(echo $HOSTNAME | cut -c $maxlen)${trunc_symbol}"
-		echo $HOSTNAME | cut -c
-        local new_host="$(NEW_HOST)${trunc_symbol}"
-    fi
-	echo $new_host
+function prompt_user {
+    local maxlen=3
+	echo "$(whoami | cut -c 1-$maxlen)"
 }
 
 function bash_prompt_command() {
@@ -37,7 +32,7 @@ function bash_prompt_command() {
     #     NEW_PWD=${trunc_symbol}/${NEW_PWD#*/}
     # fi
 	NEW_HOST=$(prompt_host)
-#	NEW_USER=$()
+	NEW_USER=$(prompt_user)
 }
  
 bash_prompt() {
@@ -84,8 +79,8 @@ bash_prompt() {
     local UC=$W                 # user's color
     [ $UID -eq "0" ] && UC=$R   # root's color
 
-    PS1="$TITLEBAR${EMK}${UC}\u${EMK}@${UC}\h ${EMB}\${NEW_PWD}${EMK} ${UC}\\$ ${NONE}" 
-#    PS1="$TITLEBAR${EMK}${UC}\u${EMK}@${UC}\${NEW_HOST} ${EMB}\${NEW_PWD}${EMK} ${UC}\\$ ${NONE}"
+#    PS1="$TITLEBAR${EMK}${UC}\u${EMK}@${UC}\h ${EMB}\${NEW_PWD}${EMK} ${UC}\\$ ${NONE}" 
+    PS1="$TITLEBAR${EMK}${UC}\${NEW_USER}${EMK}@${UC}\${NEW_HOST} ${EMB}\${NEW_PWD}${EMK} ${UC}\\$ ${NONE}"
     # without colors: PS1="[\u@\h \${NEW_PWD}]\\$ "
     # extra backslash in front of \$ to make bash colorize the prompt
 }
@@ -93,3 +88,7 @@ bash_prompt() {
 PROMPT_COMMAND=bash_prompt_command
 bash_prompt
 unset bash_prompt
+
+export HISTTIMEFORMAT="%s "
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER \
+               "$(pwd) $(history 1)" >> ~/.bash_eternal_history'
