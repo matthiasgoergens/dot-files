@@ -105,7 +105,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
-if which brew; then
+if which brew > /dev/null ; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
@@ -127,7 +127,7 @@ PATH="$HOME/.cabal/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 export PATH
 
-if which stack; then
+if which stack > /dev/null ; then
   eval "$(stack --bash-completion-script stack)"
 fi
 
