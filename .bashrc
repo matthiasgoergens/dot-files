@@ -146,7 +146,9 @@ if [ -f ~/programming/z/z.sh ]; then
   . ~/programming/z/z.sh
 fi
 
-export PYTHONSTARTUP="$HOME/.pythonstartup.py"
+if [ -f ~/"$HOME/.pythonstartup.py" ]; then
+  export PYTHONSTARTUP="$HOME/.pythonstartup.py"
+fi
 
 # For aterm:
 case "$TERM" in
