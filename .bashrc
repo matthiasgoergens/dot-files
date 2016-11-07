@@ -109,7 +109,6 @@ if which brew; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
-  export HOMEBREW_GITHUB_API_TOKEN=1b740ca48aa54a7d59a5720e60d61c4b3789c21f
 fi
 
 
