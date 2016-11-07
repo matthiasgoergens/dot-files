@@ -138,8 +138,13 @@ shopt -s histappend
 
 export GIT_USER=matthiasgoergens
 
-source ~/programming/bash/prompt_pwd.bash
-. ~/programming/z/z.sh
+if [ -f ~/programming/bash/prompt_pwd.bash ]; then
+  source ~/programming/bash/prompt_pwd.bash
+fi
+
+if [ -f ~/programming/z/z.sh ]; then
+  . ~/programming/z/z.sh
+fi
 
 export PYTHONSTARTUP="$HOME/.pythonstartup.py"
 
