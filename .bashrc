@@ -143,8 +143,6 @@ source ~/programming/bash/prompt_pwd.bash
 
 export PYTHONSTARTUP="$HOME/.pythonstartup.py"
 
-export CHROOTROOT="/home/matthiasg/xenclient/chroots/lenny-chroot"
-
 # For aterm:
 case "$TERM" in
 	xterm) export PS1=$PS1"\[\e]0;\H:\w\a\]";;
