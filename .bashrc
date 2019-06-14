@@ -18,6 +18,10 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+export HISTTIMEFORMAT="%s "
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER \
+               "$(history 1)" >> ~/.bash_eternal_history'
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 
 # check the window size after each command and, if necessary,
@@ -42,7 +46,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -111,6 +115,13 @@ if which brew > /dev/null ; then
   fi
 fi
 
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion || {
+    # if not found in /usr/local/etc, try the brew --prefix location
+    [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && \
+        . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+    [ -f "$(brew --prefix)/etc/bash_completion.d/git-prompt.sh" ] && \
+        source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+}
 
 # ls doesn't like this.  But I remember enabling it for tree, or so.
 #export LS_COLORS="yes"
@@ -119,12 +130,17 @@ export EDITOR=emacsclient
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
-# As multiple lines to make git diff more useful.
+# Path additions as multiple lines to make git diff more useful.
+
+## for mac home brew.
+PATH="/usr/local/opt/ruby/bin/:$PATH"
+PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 PATH="$HOME/bin:$PATH"
 PATH="$HOME/.cabal/bin:$PATH"
 # for Haskell stack
 PATH="$HOME/.local/bin:$PATH"
+
 export PATH
 
 if which stack > /dev/null ; then
@@ -138,12 +154,12 @@ shopt -s histappend
 
 export GIT_USER=matthiasgoergens
 
-if [ -f ~/programming/bash/prompt_pwd.bash ]; then
-  source ~/programming/bash/prompt_pwd.bash
+if [ -f ~/dot-files/prompt_pwd.bash ]; then
+  source ~/dot-files/prompt_pwd.bash
 fi
 
-if [ -f ~/programming/z/z.sh ]; then
-  . ~/programming/z/z.sh
+if [ -f ~/dot-files/z/z.sh ]; then
+  . ~/dot-files/z/z.sh
 fi
 
 if [ -f ~/"$HOME/.pythonstartup.py" ]; then

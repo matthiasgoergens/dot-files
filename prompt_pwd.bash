@@ -79,8 +79,9 @@ bash_prompt() {
     local UC=$W                 # user's color
     [ $UID -eq "0" ] && UC=$R   # root's color
 
-#    PS1="$TITLEBAR${EMK}${UC}\u${EMK}@${UC}\h ${EMB}\${NEW_PWD}${EMK} ${UC}\\$ ${NONE}" 
-    PS1="$TITLEBAR${EMK}${UC}\${NEW_USER}${EMK}@${UC}\${NEW_HOST} ${EMB}\${NEW_PWD}${EMK} ${UC}\\$ ${NONE}"
+#    PS1="$TITLEBAR${EMK}${UC}\u${EMK}@${UC}\h ${EMB}\${NEW_PWD}${EMK} ${UC}\\$ ${NONE}"
+    # PS1="$TITLEBAR${EMK}${UC}\${NEW_USER}${EMK}@${UC}\${NEW_HOST} ${EMB}\${NEW_PWD}${EMK} ${UC}\$(__git_ps1 '(%s)')\\$ ${NONE}"
+    PS1="$TITLEBAR${EMK}${UC}${EMK}${UC}${EMB}\${NEW_PWD}${EMK} ${UC}\$(__git_ps1 '(%s)')\\$ ${NONE}"
     # without colors: PS1="[\u@\h \${NEW_PWD}]\\$ "
     # extra backslash in front of \$ to make bash colorize the prompt
 }
