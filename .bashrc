@@ -125,9 +125,9 @@ fi
 
 # ls doesn't like this.  But I remember enabling it for tree, or so.
 #export LS_COLORS="yes"
-export EDITOR=emacsclient
+export EDITOR=nvim
 
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+# export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 # Path additions as multiple lines to make git diff more useful.

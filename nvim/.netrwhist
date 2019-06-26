@@ -1,9 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/matthias/prog/haskell/treap/test'
-let g:netrw_dirhist_2='/Users/matthias/prog/haskell/stepFunction'
-let g:netrw_dirhist_3='/Users/matthias/prog/haskell/redgrep/packages'
-let g:netrw_dirhist_4='/Users/matthias/prog/haskell/stepFunction/test'
-let g:netrw_dirhist_5='/Users/matthias/prog/haskell/selection/packages/containers-0.5.8.1/Data/Sequence'
-let g:netrw_dirhist_6='/Users/matthias/prog/haskell/selection'
-let g:netrw_dirhist_7='/Users/matthias.gorgens/prog/neovim/yats.vim/indent'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/matthias.gorgens/prog/oaknorth/marmot/api/.hypothesis/unicodedata'
+let g:netrw_dirhist_2='/Users/matthias.gorgens/prog/oaknorth/marmot/api/.hypothesis'
+let g:netrw_dirhist_3='/Users/matthias.gorgens/prog/oaknorth/marmot/terraform'

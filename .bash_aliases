@@ -3,3 +3,7 @@
 # alias ecn='emacsclient -n'
 alias vim=nvim
 alias make=gmake
+alias groot='cd $(git groot)'
+alias devdiff='git diff --histogram --ignore-all-space  $(git merge-base origin/develop HEAD)'
+alias make=gmake
+alias find=gfind
